@@ -1,5 +1,8 @@
 CC = gcc
-SRC = main.c school.c
+SRC = main.c file1.c file2.c
 
-all:
-        $(CC) $(SRC) -o school
+all: $(SRC)
+	$(CC) -o school $(SRC)
+
+clean:
+	rm -f school
