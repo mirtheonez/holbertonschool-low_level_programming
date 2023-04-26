@@ -1,30 +1,45 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stddef.h>
+#include <string.h>
+
 /**
-* string_nconcat - concatenates two strings.
-* @s1: string.
-* @s2: string.
-* @n: number of bytes.
-* Return: NULL if fail, otherwise a pointer.
-*/
+ * string_nconcat - function concatenates two strings
+ * @s1: first string to concatenate
+ * @s2: second string
+ * @n: number of bytes to concatenate from s2
+ * Return: pointer to the concatenated strings
+ */
+
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-char *c;
-unsigned int l = n, i;
-if (s1 == NULL)
-s1 = "";
-if (s2 == NULL)
-s2 = "";
-for (i = 0; s1[i]; i++)
-l++;
-c = malloc(sizeof(char) * (l + 1));
-if (c == NULL)
-return (NULL);
-l = 0;
-for (i = 0; s1[i]; i++)
-c[l++] = s1[i];
-for (i = 0; s2[i] && i < n; i++)
-c[l++] = s2[i];
-c[l] = '\0';
-return (c);
+
+	char *am;
+	unsigned int i, j, len_s1 = 0, len_s2 = 0, total = 0;
+
+	s1 = s1 ? s1 : "";
+	s2 = s2 ? s2 : "";
+	len_s1 = strlen(s1);
+	len_s2 = strlen(s2);
+	if (n >= len_s2)
+	{
+		n = len_s2;
+	}
+	total = (len_s1 + n + 1);
+
+	am = malloc(total * sizeof(char));
+	if (!am)
+	{
+		return (NULL);
+	}
+	for (i = 0; i < len_s1; i++)
+	{
+		am[i] = s1[i];
+	}
+	for (j = 0; j < n; j++)
+	{
+		am[i + j] = s2[j];
+	}
+	am[i + j] = '\0';
+	return (am);
 }
