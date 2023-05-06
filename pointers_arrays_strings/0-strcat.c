@@ -1,17 +1,20 @@
 #include "main.h"
+#include <string.h>
 /**
-*_strcat - concatenates string pointed to by @src to the end of
-*	the string pointed to by @dest
-*@dest: pointer to the string to be concatenated
-*@src: source string to be appended
-*Return: a pointer to the destination string
-*/
+ * _strcat - concatenates tow string
+ * @dest: The pointer string1
+ * @src: string2
+ *
+ * Return: char
+ */
 char *_strcat(char *dest, char *src)
 {
-int i = 0, n = 0;
-while (dest[i++])
-n++;
-for (i = 0; src[i]; i++)
-dest[n++] = src[i];
-return (dest);
+	char *index;
+
+	index = dest + strlen(dest);
+	while (*src != '\0')
+		*index++ = *src++;
+	*index = '\0';
+	return (dest);
+
 }

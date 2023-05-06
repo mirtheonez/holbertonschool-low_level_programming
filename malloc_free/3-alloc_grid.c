@@ -1,40 +1,36 @@
-#include "main.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include"main.h"
 
 /**
- * alloc_grid - returns a pointer to a 2 dimensional array of integers
- * @width: columns
- * @height: rows
- * Return: pointer to 2d array
+ * str_concat - a function that concatenates two strings
+ * @s1: str
+ * @s2: str
+ * Return:res
  */
 
-int **alloc_grid(int width, int height)
+char *str_concat(char *s1, char *s2)
 {
-	int **grid;
-	int i, j;
+	char *concat;
+	int i, k, j, debs2 = 0;
 
-	if (width <= 0 || height <= 0) /* validate input */
-		return (NULL);
-
-	grid = malloc(height * sizeof(int *)); /*allocate memory for rows*/
-
-	if (grid == NULL) /* validate memory */
-		return (NULL);
-
-	for (i = 0; i < height; i++) /*allocate memory for columns of each row*/
+	if (!s1)
+		s1 = "";
+	if (!s2)
+		s2 = "";
+	for (i = 0 ; s1[i] != '\0' ; i++)
+		;
+	for (j = 0 ; s2[j] != '\0' ; j++)
+		;
+	concat = malloc(sizeof(char) * (i + j + 1));
+	if (concat == NULL)
 	{
-		grid[i] = malloc(width * sizeof(int));
-		if (grid[i] == NULL) /* validate memory */
-		{
-			for (i = 0; i < height; i++)
-				free(grid[i]);
-			free(grid);
-			return (NULL);
-		}
-		for (j = 0; j < width; j++) /* set array values to 0 */
-			grid[i][j] = 0;
+		return (NULL);
 	}
-
-	return (grid);
+	for (k = 0 ; k < i ; k++)
+		concat[k] = s1[k];
+	for (k = i ; k < i + j ; k++)
+		concat[k] = s2[debs2++];
+	concat[i + j] = '\0';
+	return (concat);
 }
