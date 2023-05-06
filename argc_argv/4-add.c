@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 /**
  * main - adds positive numbers.
  * @argc: number of arguments.
@@ -9,8 +10,11 @@
 int main(int argc, char *argv[])
 {
 	int n, d, s = 0;
+
+	/* Iterate through each argument passed to the program */
 	for (n = 1; n < argc; n++)
 	{
+		/* Check if each character in the argument is a digit */
 		for (d = 0; argv[n][d]; d++)
 		{
 			if (argv[n][d] < '0' || argv[n][d] > '9')
@@ -19,8 +23,11 @@ int main(int argc, char *argv[])
 				return (1);
 			}
 		}
+
+		/* Convert the argument to an integer and add to the sum */
 		s += atoi(argv[n]);
 	}
+
 	printf("%d\n", s);
 	return (0);
 }
