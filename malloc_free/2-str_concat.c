@@ -1,6 +1,6 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include"main.h"
+#include "main.h"
 
 /**
  * _strdup - a function that returns a pointer to a newly
@@ -18,14 +18,14 @@ char *_strdup(char *str)
 	{
 		return (NULL);
 	}
-	for (i = 0 ; str[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 		;
 	res = malloc(sizeof(char) * i + 1);
 	if (!res)
 	{
 		return (NULL);
 	}
-	for (j = 0 ; str[j] != '\0' ; j++)
+	for (j = 0; str[j] != '\0'; j++)
 	{
 		res[j] = str[j];
 	}
